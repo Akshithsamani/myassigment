@@ -18,7 +18,9 @@ class UserController extends Controller
     {
     	
     		$data = file_get_contents("https://api.coursera.org/api/courses.v1");
+
             $courses = json_decode($data, true);
+
             $myCourses = Course::pluck('courseId')->toArray(); 
 
     	return view('index',compact('courses', 'myCourses'));		
@@ -33,10 +35,19 @@ class UserController extends Controller
         $course->courseId = $id;
         $course->type = $type;
         $course->slug = $slug;
+
         $course->save();
+
         Session::flash('Course Added' ,'success');
 
         return back();
 
+    }
+
+    public function deleteCourse($id)
+    {
+        Course::where('courseId', $id)->delete();
+        
+        return back();
     }
 }
