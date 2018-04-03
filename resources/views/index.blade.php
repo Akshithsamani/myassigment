@@ -4,14 +4,11 @@
     {
        background-image: url('img/home-bg.jpg');
     }
-    p{
-      color: #fff;
-    }
   </style>
 @section('content')
 <div class="container">
     <div class="row">
-        <div class="col-md-8 col-md-offset-2">
+        <div class="col-md-10 col-md-offset-1">
             <div class="panel panel-default" style="background-color: transparent; border:none;">
                 <br><br>
 
@@ -22,42 +19,47 @@
                         </div>
                     @endif
                 
-                  <form action="" class="search-form" style="margin-top: 30px;">
-                      <div class=" col-md-6 col-md-offset-3 form-group has-feedback">
-                        <p>Search Friends :</p>
-                        <input type="text" class="form-control" autocomplete="off" name="search" id="search" placeholder="eg. Alex">
-                      </div>
-                      <div class=" col-md-6 col-md-offset-3  form-group has-feedback">
-                          <input type="submit" class="form-control btn-success" name="">
-                          <p>Note: Only no friend/request user will be shown on query</p>
-                      </div>
-                  </form>
-                  @if($user)
-                    <table class="table table-dark" style="background-color: #f5efef;">
+                    <table class="table table-dark table-hover table-borered" style="background-color: #f5efef;">
                       <thead>
                           <tr>
                             <th scope="col">#</th>
-                            <th scope="col">Name</th>
-                            <th scope="col">Email</th>
+                            <th scope="col">Name (Click on course name to view the details)</th>
                             <th scope="col">Action</th>
                           </tr>
                       </thead>
                       <tbody>@php $i = 1;@endphp
-                        @foreach($user as $key=>$users)
+                        @foreach($courses['elements'] as $key=>$course)
+                        @php 
+                        $name = $course['name'];
+                        $type = $course['courseType'];
+                        $id = $course['id'];
+                        $slug = $course['slug'];
+                        @endphp
                           <tr>
-                            <th scope="row">{{$i}}</th>
-                            <td>{{$users->name}}</td>
-                            <td>{{$users->email}}</td>
-                            <td><a href="{{ url('/addfriends/'.$users->id)}}">Add friend</a></td>
+                              <th scope="row">{{$i}}</th>
+                              <td><a data-toggle="collapse" data-target="#{{$course['id']}}">{{$course['name']}}</a>
+                                <div id="{{$course['id']}}" class="collapse">
+                                  <dl class="row text-center">
+                                    <dt><br>
+                                      <dd class="col-md-3">Type : {{$course['courseType']}}</dd>
+                                      <dd class="col-md-5">ID : {{$course['id']}}</dd>
+                                      <dd class="col-md-4">Slug : {{$course['slug']}}</dd>
+                                    </dt>
+                                  </dl>
+                                </div>
+                              </td>
+                              <td>
+                                @if(in_array($id, $myCourses))
+                                  <a data-toggle="collapse" data-target="#{{$course['id']}}"><span style="color:green; font-weight: 900;">view</span></a>
+                                @else
+                                  <a href="{{ url('/addCourse/'.$name.'/'.$type.'/'.$id.'/'.$slug)}}">Add</a>
+                                @endif
+                              </td>
+                            </form>
                           </tr>@php $i++;@endphp
                         @endforeach
                       </tbody>
                     </table>
-                  @else
-                    <div class="col-md-12">
-                      <p style="color: red;">{{$message}}</p>
-                    </div>
-                  @endif
                 </div>
             </div>
         </div>

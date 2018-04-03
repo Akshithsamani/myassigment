@@ -27,15 +27,4 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-
-    public function following()
-    {
-        return $this->belongsToMany(User::class, 'connections', 'follower_id', 'following_id')
-            ->withPivot('status')->withTimestamps();
-    }
-    public function follower()
-    {
-        return $this->belongsToMany(User::class, 'connections','following_id','follower_id')
-            ->withPivot('status')->withTimestamps();
-    }
 }

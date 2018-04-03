@@ -8,12 +8,12 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'TransNeuronSocial') }}</title>
+    <title>{{ config('app.name', 'Krackin-Coursera') }}</title>
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
-@php $reqCount =  \App\Utility::requestCount();@endphp
+
 <body>
     <div id="app">
         <nav class="navbar navbar-default navbar-static-top">
@@ -30,8 +30,8 @@
 
                     <!-- Branding Image -->
                     <a class="navbar-brand" href="{{ url('/') }}">
-                        {{-- config('app.name', 'TransNeuronSocial') --}}
-                        TransNeuron<span style="color: red;">Social</span>
+                        {{-- config('app.name', 'Krackin-Coursera') --}}
+                        Krackin<span style="color: red;">Coursera</span>
                     </a>
                 </div>
 
@@ -49,11 +49,6 @@
                             <li><a href="{{ route('register') }}">Register</a></li>
                         @else
                             <li><a href="{{ route('home') }}">Home</a></li>
-                            <li><a href="{{ route('friends') }}">Friends</a></li>
-                            <li><a href="{{ route('request') }}" >Friends Request <span class="badge badge-danger">@if(($reqCount != 0) &&($reqCount != NULL))
-                            {{$reqCount}}
-                        @endif</span></a>
-                            </li>
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
                                     {{ Auth::user()->name }} <span class="caret"></span>

@@ -5,7 +5,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>TransNeuronSocial</title>
+        <title>Krackin-Coursera</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
@@ -73,6 +73,7 @@
             @if (Route::has('login'))
                 <div class="top-right links">
                     @auth
+                        <a href="{{ url('/home') }}" style="color: #000; font-size: 1em;text-transform:none;">Home</a>
                         <a href="{{ url('/home') }}" style="color: #000; font-size: 1em;text-transform:none;">Hi {{Auth::user()->name}}</a>
                     @else
                         <a href="{{ route('login') }}" style="color: #000;">Login</a>
@@ -83,16 +84,7 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    TransNeuron<span style="color: #d10600;">Social</span>
-                </div>
-
-                <div class="links">
-                    <a href="{{ url('friends') }}">Friends</a>
-                    <a href="">Follower</a>
-                    <a href="">Following</a>
-                    <a href="">me !</a>
-                    <a href="">&</a>
-                    <a href="">you !</a>
+                    Krackin<span style="color: #d10600;">Coursera</span>
                 </div>
             </div>
         </div>
