@@ -50,7 +50,8 @@
                               </td>
                               <td>
                                 @if(in_array($id, $myCourses))
-                                  <a data-toggle="collapse" data-target="#{{$course['id']}}"><span style="color:green; font-weight: 900;">view</span></a>
+                                  <a data-toggle="collapse" data-target="#{{$course['id']}}"><span style="color:green; font-weight: 900;">View</span></a>
+                                  <a href="{{url('/deleteCourse/'.$id)}}"><span style="color:red; font-weight: 900;">Delete</span></a>
                                 @else
                                   <a href="{{ url('/addCourse/'.$name.'/'.$type.'/'.$id.'/'.$slug)}}">Add</a>
                                 @endif

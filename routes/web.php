@@ -20,4 +20,5 @@ Auth::routes();
 Route::get('/home', 'UserController@index')->name('home');
 Route::group(['middleware'=>['auth']], function(){
 	Route::get('/addCourse/{name}/{type}/{id}/{slug}', 'UserController@addCourse')->name('addCourse');
+	Route::get('/deleteCourse/{id}', 'UserController@deleteCourse')->name('deleteCourse');
 });
