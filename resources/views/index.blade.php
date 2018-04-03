@@ -41,9 +41,9 @@
                                 <div id="{{$course['id']}}" class="collapse">
                                   <dl class="row text-center">
                                     <dt><br>
-                                      <dd class="col-md-3">Type : {{$course['courseType']}}</dd>
+                                      <dd class="col-md-3" style="color: darkorange;">Type : {{$course['courseType']}}</dd>
                                       <dd class="col-md-5">ID : {{$course['id']}}</dd>
-                                      <dd class="col-md-4">Slug : {{$course['slug']}}</dd>
+                                      <dd class="col-md-4" style="color:darkorange;">Slug : {{$course['slug']}}</dd>
                                     </dt>
                                   </dl>
                                 </div>
